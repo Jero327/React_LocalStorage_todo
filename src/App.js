@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import TodoItem from "./TodoItem"
 
 function App() {
   const savedTodos = JSON.parse(localStorage.getItem("todos")) || []
@@ -43,21 +44,14 @@ function App() {
       </div>
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id}>
-            <input
-              type="checkbox"
-              checked={todo.completed}
-              onChange={() => toggleTodo(todo.id)}
-            />
-            <span
-              style={{
-                textDecoration: todo.completed ? "line-through" : "none",
-              }}
-            >
-              {todo.text}
-            </span>
-            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
-          </li>
+          <TodoItem
+            key={todo.id}
+            {...todo}
+            toggleTodo={toggleTodo}
+            deleteTodo={deleteTodo}
+            setTodos={setTodos}
+            todos={todos}
+          />
         ))}
       </ul>
     </div>
