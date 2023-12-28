@@ -4,10 +4,12 @@ function TodoItem(props) {
   const [isEdit, setIsEdit] = useState(false)
   const [updatedTodo, setUpdatedTodo] = useState(props.text)
 
+  // Toggle editing status
   function toggleIsEditTodo() {
     setIsEdit(true)
   }
 
+  // Handle update todo
   function updateTodo() {
     if (updatedTodo.trim() !== "") {
       const updatedTodos = props.todos.map((todo) =>
@@ -17,6 +19,7 @@ function TodoItem(props) {
     }
     setIsEdit(false)
   }
+
   return (
     <li>
       {isEdit ? (
