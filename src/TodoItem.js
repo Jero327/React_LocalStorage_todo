@@ -21,33 +21,39 @@ function TodoItem(props) {
   }
 
   return (
-    <li>
+    <li className="todo-item">
       {isEdit ? (
-        <div>
+        <div className="edit-todo-container">
           <input
             type="text"
             value={updatedTodo}
             onChange={(e) => setUpdatedTodo(e.target.value)}
+            className="edit-todo-input"
           />
-          <button onClick={() => updateTodo()}>Update</button>
+          <button onClick={() => updateTodo()} className="update-todo-button">
+            Update
+          </button>
         </div>
       ) : (
-        <>
+        <div className="view-todo-container">
           <input
             type="checkbox"
             checked={props.completed}
             onChange={() => props.toggleTodo(props.id)}
           />
-          <span
-            style={{
-              textDecoration: props.completed ? "line-through" : "none",
-            }}
-          >
+          <span className={`todo-text ${props.completed ? "completed" : ""}`}>
             {props.text}
           </span>
-          <button onClick={() => toggleIsEditTodo()}>Edit</button>
-          <button onClick={() => props.deleteTodo(props.id)}>Delete</button>
-        </>
+          <button onClick={() => toggleIsEditTodo()} className="edit-button">
+            Edit
+          </button>
+          <button
+            onClick={() => props.deleteTodo(props.id)}
+            className="delete-button"
+          >
+            Delete
+          </button>
+        </div>
       )}
     </li>
   )
