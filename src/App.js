@@ -36,18 +36,21 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Todo App</h1>
-      <div>
+    <div className="app-container">
+      <h1 className="app-title">Todo App</h1>
+      <div className="add-todo-container">
         <input
           type="text"
           placeholder="Add new todo"
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
+          className="add-todo-input"
         />
-        <button onClick={addTodo}>Add</button>
+        <button onClick={addTodo} className="add-todo-button">
+          Add
+        </button>
       </div>
-      <ul>
+      <ul className="todo-list">
         {todos.map((todo) => (
           <TodoItem
             key={todo.id}
